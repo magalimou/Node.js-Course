@@ -68,17 +68,26 @@ function divide(dividend, divisor) {
 }
 
 function multiply(string1, string2) {
-    let result = '0';
-    
-    for (let i = string2; i > 0; i--) {
-        result = plus(result, string1);
-    }
+    const num1 = string1.split('').reverse();
+    const num2 = string2.split('').reverse();
+    const result = [];
 
-    return result;
+    for (let i = 0; i < num1.length; i++) {
+        for (let j = 0; j < num2.length; j++) {
+            const product = num1[i] * num2[j];
+            result[i + j] = (result[i + j] || 0) + product;
+            if (result[i + j] >= 10) {
+                result[i + j + 1] = (result[i + j + 1] || 0) + Math.floor(result[i + j] / 10);
+                result[i + j] %= 10;
+            }
+        }
+    }
+    return result.reverse().join('').replace(/^0*(\d)/, '$1') || '0';
 }
 
-let a = '456';
-let b = '456';
+
+let a = '22222222222222222222222200000000000000';
+let b = '20000000000';
 console.log(`The result of ${a} + ${b} is ${plus(a, b)}`);
 console.log(`The result of ${a} - ${b} is ${minus(a, b)}`);
 console.log(`The result of ${a} % ${b} is ${divide(a, b)}`);
