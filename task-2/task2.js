@@ -94,6 +94,7 @@ try{
     console.log(coerceToType(5, 'string'));
     
 } catch (error){
+    
     console.log(error.message);
 }
 
