@@ -34,7 +34,16 @@ function invertBoolean(value){
 
 function convertToNumber(value){
     if(typeof value === 'string'){
-        return parseInt(value);
+
+        if(isNaN(value)){
+            throw new Error('The provided string can not be converted into a number.');
+        }
+
+        if(value === ''){
+            return 0;
+        }
+       
+        return parseInt(value);  
     }
 
     if(typeof value === 'number' || typeof value === 'bigint'){
@@ -49,10 +58,6 @@ function convertToNumber(value){
     }
 }
 
-//coerceToType: Accepts two arguments: value and type. It attempts to convert the value to the specified
-//type using type coercion. 
-//The function should return the coerced value if successful. If the coercion is not possible,
-//it should throw an error.
 function coerceToType(value, type){
 
     if(typeof value === type){
@@ -61,15 +66,15 @@ function coerceToType(value, type){
 
     switch(type){
         case 'number':
-            return this.convertToNumber(value);
+            return convertToNumber(value);
         case 'string':
-            return this.stringifyValue(value);
+            return stringifyValue(value);
         case 'boolean':
             return Boolean(value);
         case 'bigint':
             return BigInt(value);
         default:
-            throw new Error('The provided type is not supported.');
+            throw new Error('The provided value cannot be converted into the specified type.');
     }
 }
 
@@ -83,11 +88,12 @@ try{
     let value = true;
     console.log(invertBoolean(value));
 
-    console.log(convertToNumber('1234'));
+    console.log(convertToNumber(''));
 
-    console.log(coerceToType(a, 'boolean'));
+    console.log(typeof "jaja")
+    console.log(coerceToType(5, 'string'));
     
-} catch (error) {
+} catch (error){
     console.log(error.message);
 }
 
