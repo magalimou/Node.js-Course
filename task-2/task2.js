@@ -85,20 +85,20 @@ try{
     
     console.log(addValues(a, b)); 
 
-    let value = true;
-    console.log(invertBoolean(value));
+    console.log(stringifyValue(a));
+
+    console.log(invertBoolean(true));
 
     console.log(convertToNumber(''));
 
-    console.log(typeof "jaja")
     console.log(coerceToType(5, 'string'));
     
 } catch (error){
     console.log(error.message);
 }
 
-let a = true;
-console.log(stringifyValue(a));
+
+
 
 
 
