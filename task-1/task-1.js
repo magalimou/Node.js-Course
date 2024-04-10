@@ -13,9 +13,7 @@ function plus(string1, string2){
         i--;
         j--;
     }
-
     return result;
-
 }
 
 function minus(string1, string2) {
@@ -87,7 +85,7 @@ function multiply(string1, string2) {
 
 
 let a = '22222222222222222222222200000000000000';
-let b = '20000000000';
+let b = '3000';
 console.log(`The result of ${a} + ${b} is ${plus(a, b)}`);
 console.log(`The result of ${a} - ${b} is ${minus(a, b)}`);
 console.log(`The result of ${a} % ${b} is ${divide(a, b)}`);
