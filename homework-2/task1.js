@@ -1,6 +1,10 @@
 function addValues(value1, value2) {
-    if ((typeof value1 === 'number' || typeof value1 === 'string' || typeof value1 ==='boolean' || typeof value1==='bigint') && typeof value1 === typeof value2) {
+    if ((typeof value1 === 'number' || typeof value1 === 'string' || typeof value1==='bigint') && typeof value1 === typeof value2) {
         return value1 + value2;
+    }
+
+    if(typeof value1 === 'boolean' && typeof value2 === 'boolean'){
+        return value1 || value2;
     }
 
     if (value1 instanceof Array && value2 instanceof Array) {
@@ -81,9 +85,9 @@ function coerceToType(value, type){
 try{
 
     let a = [1, 2, 3, 4, 5];
-    let b = [6, 7, 8, 9, 10];
-    
-    console.log(addValues(a, b)); 
+    let b = [6, 7, 8, 9, 10]; 
+
+    console.log(addValues(true,false)); 
 
     console.log(stringifyValue(a));
 
@@ -91,7 +95,7 @@ try{
 
     console.log(convertToNumber(''));
 
-    console.log(coerceToType(5, 'string'));
+    console.log(coerceToType(b, 'string'));
     
 } catch (error){
     
