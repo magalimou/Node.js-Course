@@ -33,7 +33,7 @@ function getAverageGradeStudent(student)
     return averageGrade;
 }
 
-/*Testing functions task 2*/
+
 
 let user = { firstname: 'sam', lastname: 'smith' };
 console.log(getFullName(user));
