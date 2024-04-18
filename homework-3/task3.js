@@ -9,10 +9,6 @@ function createCounter()
     }
 }
 
-/*Implement a higher-order function called repeatFunction that takes a function and a 
-number as arguments. The function should return a new function that invokes the original 
-function multiple times based on the provided number. If the number is negative, the new
-function should invoke the original function indefinitely until stopped.*/
 function repeatFunction(func, num)
 {
     return function(){
@@ -31,8 +27,8 @@ function repeatFunction(func, num)
     }
 }
 
-
 /*Testing functions Task 3*/
+
 let counter = createCounter();
 console.log(counter());
 console.log(counter());
