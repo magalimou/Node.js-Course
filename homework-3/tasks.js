@@ -74,6 +74,6 @@ let students = [
     { name: 'Juan', grades: [90, 85, 95] },
     { name: 'María', grades: [80, 75, 85] },
     { name: 'Carlos', grades: [95, 90, 100] }
-  ];
+];
 console.log(getAverageGrade(students));
 
