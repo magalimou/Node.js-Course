@@ -7,22 +7,23 @@ function getFullName(user)
 
 function filterUniqueWords(text)
 {
-    let words = text.split(" ");
+    let lowerText = text.toLowerCase();
+    let words = lowerText.split(" ");
     let uniqueWordsSet = new Set(words);
     let uniqueWordsArray = Array.from(uniqueWordsSet);
     return uniqueWordsArray.sort();
 }
 
-function getAverageGrade(studentsArray)
+function getAverageGrades(studentsArray)
 {
-    let totalGrades = 0;
+    let array = [];
     for(student of studentsArray){
         let averageGrade = getAverageGradeStudent(student);
-        totalGrades = totalGrades + averageGrade;
+        let studentObject = {name: student.name, averageGrade: averageGrade};
+        array.push(studentObject);
     }
-    let totalStudents = studentsArray.length;
-    let averageGrade = totalGrades / totalStudents;
-    return averageGrade;
+
+    return array;
 }
 
 function getAverageGradeStudent(student)
@@ -38,7 +39,7 @@ function getAverageGradeStudent(student)
 let user = { firstname: 'sam', lastname: 'smith' };
 console.log(getFullName(user));
 
-let text = "hello world hello again world again world";
+let text = "Hello world hello Again world again world";
 console.log(filterUniqueWords(text));
 
 let students = [
@@ -47,5 +48,5 @@ let students = [
     { name: 'Carlos', grades: [95, 90, 100] }
 ];
 
-let average = getAverageGrade(students);
+let average = getAverageGrades(students);
 console.log(average); 
