@@ -35,5 +35,6 @@ Object.defineProperty(person, 'address', {
 
 console.log(Object.getOwnPropertyDescriptors(person));
 
-person.updateInfo({'address': 'New York, USA'});
+person.updateInfo({'address': {'country': 'USA', 'city': 'New York'}});
 console.log(person.address);
+console.log(Object.getOwnPropertyDescriptors(person));

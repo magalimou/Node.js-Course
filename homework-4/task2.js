@@ -28,6 +28,7 @@ function getTotalPrice(obj) {
 console.log(getTotalPrice(object));
 
 /*Implement a function called deleteNonConfigurable that takes an object and a property name as arguments. The function should delete the specified property from the object if it exists. If the property is non-configurable, throw an error with an appropriate message.*/
+
 function deleteNonConfigurable(obj, property){
     if(Object.getOwnPropertyDescriptor(obj, property).configurable){
         delete obj[property];

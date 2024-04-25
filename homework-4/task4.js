@@ -15,7 +15,6 @@ function createImmutableObject(obj){
     return obj;
 }
 
-/*use the createImmutableObject function to create an immutable version of the person object from Task 1.*/
 let person = {
     firstName: 'John',
     lastName: 'Doe',

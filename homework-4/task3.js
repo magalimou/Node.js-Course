@@ -11,6 +11,7 @@ let bankAccount = {
     },
 
     /*. The method should transfer the specified amount from the current account to the target account. Ensure that the balance and formattedBalance properties of both accounts are updated correctly.*/
+    
     transfer(obj, amount) {
         if(this._balance < amount){
             console.log("Insufficient balance");
