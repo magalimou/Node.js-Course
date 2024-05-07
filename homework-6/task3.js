@@ -1,16 +1,30 @@
 /*Task 3: Multiline Tagged Template*/
-function multiline(strings) {
 
-    let string= strings[0].trim();
-    let lines = string.split('\n');
-    const numberedLines = lines.map((line, index) => `${index + 1} ${line.trim()}`);
-    
-    return numberedLines.join('\n');
+function multiline(strings) {
+	const lines = strings[0].split('\n');
+
+	if (lines[0].trim() === '') {
+		lines.shift();
+    }
+
+	if (lines[lines.length - 1].trim() === '') {
+		lines.pop();
+	}
+
+	const maxDigits = String(lines.length).length;
+
+	const numberedLines = lines.map((line, index) => {
+		const lineNumber = (index + 1).toString().padStart(maxDigits, ' ');
+		return `${lineNumber} ${line}`;
+	});
+
+	return numberedLines.join('\n');
 }
 
+
 const code = multiline`
-function add(a, b) {  
-return a + b;  
+function add(a, b) {
+   return a + b;  
 }  
 `;
 
