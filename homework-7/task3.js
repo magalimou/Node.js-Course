@@ -28,9 +28,7 @@ function asyncFunction1() {
   function asyncFunction3(data) {
     return Promise.resolve(data + " - Result from asyncFunction3");
   }
-
  
-  
   const functionsArray = [asyncFunction1, asyncFunction2, asyncFunction3];
   
   chainPromises(functionsArray)
