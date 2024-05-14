@@ -1,3 +1,4 @@
+
 class Book{
     #title;
     #author;
@@ -5,6 +6,13 @@ class Book{
     #price;
     #available;
 
+    /*Creates an instance of a book.
+    * @param {string} title - The title of the book.
+    * @param {string} author - The author of the book.
+    * @param {string} isbn - The ISBN number of the book.
+    * @param {number} price - The price of the book.
+    * @param {boolean} available - Indicates whether the book is available or not.
+    */
     constructor(title, author, isbn, price, available){
         this.#title = title;
         this.#author = author;
@@ -13,6 +21,10 @@ class Book{
         this.#available = available;
     }
 
+    /**
+    * Gets the information of the book.
+    * @returns {string} The information of the book.
+    */
     getBookInfo(){
         return ` Title: ${this.#title}, Author: ${this.#author}, ISBN: ${this.#isbn}, Price: ${this.#price}, Available: ${this.#available}`;
     }
@@ -25,12 +37,19 @@ class Book{
         return this.#isbn;
     }
 
+    /**
+    * Checks if the book is available.
+    * @returns {boolean} true if the book is available, false otherwise.
+    */
     isAvailable(){
         return this.#available;
     }
 
 }
 
+/**
+ * Represents a fiction book, extending the Book class.
+ */
 class FictionBook extends Book{
     #genre;
 
@@ -48,6 +67,9 @@ class FictionBook extends Book{
     }
 }
 
+/**
+ * Represents a non-fiction book, extending the Book class.
+ */
 class NonFictionBook extends Book{
     #topic;
 
@@ -70,6 +92,12 @@ class User{
     #email;
     #userId;
 
+    /**
+     * Creates an instance of a user.
+     * @param {string} name - The name of the user.
+     * @param {string} email - The email of the user.
+     * @param {number} userId - The unique identifier of the user.
+    */
     constructor(name, email, userId){
         this.#name = name;
         this.#email = email;
@@ -94,20 +122,26 @@ class User{
 
     getName(){
         return this.#name;
-    }
-
-   
+    } 
 }
 
 class Cart{
     #user;
     #books;
 
+    /**
+     * Creates an instance of a shopping cart.
+     * @param {User} user - The user associated with the cart.
+     */
     constructor(user){
         this.#user = user;
         this.#books = [];
     }
 
+    /**
+     * Adds a book to the cart if it's available.
+     * @param {Book} book - The book to add to the cart.
+     */
     addBookToCart(book){
         if(book.isAvailable()){
             this.#books.push(book);
@@ -117,10 +151,18 @@ class Cart{
        
     }
 
+     /**
+     * Removes a book from the cart.
+     * @param {Book} book - The book to remove from the cart.
+     */
     removeBookFromCart(book){
         this.#books = this.#books.filter(b => b.getIsbn()!== book.getIsbn());
     }
 
+     /**
+     * Calculates the total price of all books in the cart.
+     * @returns {number} The total price of all books in the cart.
+     */
     getTotalPrice(){
         let totalPrice = 0;
         this.#books.forEach(book => {
