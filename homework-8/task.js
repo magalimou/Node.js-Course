@@ -6,7 +6,8 @@ class Book{
     #price;
     #available;
 
-    /*Creates an instance of a book.
+    /**
+    * Creates an instance of a book.
     * @param {string} title - The title of the book.
     * @param {string} author - The author of the book.
     * @param {string} isbn - The ISBN number of the book.
@@ -104,6 +105,7 @@ class User{
         this.#userId = userId;
     }
 
+    //setters
     setEmail(email){
         this.#email = email;
     }
@@ -112,6 +114,7 @@ class User{
         this.#name = name;
     }
 
+    //getters
     getEmail(){
         return this.#email;
     }
@@ -159,6 +162,15 @@ class Cart{
         this.#books = this.#books.filter(b => b.getIsbn()!== book.getIsbn());
     }
 
+    /**
+    * Finds a book in the cart by its ISBN number.
+    * @param {string} isbn - The ISBN number of the book to find.
+    * @returns {Book | undefined} The book with the specified ISBN number, or undefined if not found.
+    */
+    findBookByIsbn(isbn){
+        return this.#books.find(book => book.getIsbn() === isbn);
+    }
+
      /**
      * Calculates the total price of all books in the cart.
      * @returns {number} The total price of all books in the cart.
@@ -175,6 +187,14 @@ class Cart{
         return this.#books;
     }
 
+    getUser(){
+        return this.#user;
+    }
+
+    /**
+     * Gets information about the cart, including user, total price, and books.
+     * @returns {string} Information about the cart.
+     */
     getCartInfo(){
         let cartInfo = `User: ${this.#user.getName()}, Total Price: ${this.getTotalPrice()}, Books: `;
         this.#books.forEach(book => {
@@ -189,12 +209,21 @@ class Order{
     #user;
     #books;
 
+     /**
+     * Creates an instance of an order.
+     * @param {User} user - The user who placed the order.
+     * @param {Book[]} books - The books included in the order.
+     */
     constructor(user, books)
     {  
         this.#user = user;
         this.#books = books;
     }
 
+     /**
+     * Calculates the total price of all books in the order.
+     * @returns {number} The total price of all books in the order.
+     */
     getTotalPrice(){
         let totalPrice = 0;
         this.#books.forEach(book => {
@@ -203,6 +232,10 @@ class Order{
         return totalPrice;
     }
     
+    /**
+     * Gets information about the order, including user, total price, and books.
+     * @returns {string} Information about the order.
+     */
     getOrderInfo(){
         let orderInfo = `User: ${this.#user.getName()}, Total Price: ${this.getTotalPrice()}, Books: `;
         this.#books.forEach(book => {
@@ -210,11 +243,16 @@ class Order{
         });
         return orderInfo;
     }
+
+    //getters
+    getUser(){
+        return this.#user;
+    }
+
+    getBooks(){ 
+        return this.#books;
+    }
 }
-
-
-
-
 
 
 //IMPLEMENTATION
@@ -244,6 +282,7 @@ cart3.addBookToCart(book1);
 console.log(cart3.getCartInfo());
 cart3.removeBookFromCart(book1);
 console.log(cart3.getCartInfo());
+
 
 //orders
 const order = new Order(user, cart.getBooks());
