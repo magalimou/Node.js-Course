@@ -1,4 +1,4 @@
-/*Binary Tree: Implement a class for a binary tree data structure. Include methods for inserting nodes, searching for a node, and traversing the tree (e.g., in-order, pre-order, post-order).*/
+
 class Node {
     constructor(item) {
         this.item = item;
