@@ -1,5 +1,4 @@
 class Stack {
-    // Implement methods for push, pop, peek...
     #elements;
     #top;
 
