@@ -68,16 +68,16 @@ class BinaryTree {
      * @returns {Node|null} - The node containing the item, or null if not found.
      */
     search(item) {
-        return this.searchNode(this.#root, item);
+        return this.#searchNode(this.#root, item);
     }
 
-    searchNode(node, item) {
+    #searchNode(node, item) {
         if(node === null) {
             return null;
         } else if(item < node.item) {
-            return this.searchNode(node.left, item);
+            return this.#searchNode(node.left, item);
         } else if(item > node.item) {
-            return this.searchNode(node.right, item);
+            return this.#searchNode(node.right, item);
         } else {
             return node;
         }
@@ -88,14 +88,14 @@ class BinaryTree {
      * @returns {Array} - An array containing the items visited during the traversal.
      */
     preOrder(){
-        return this.preOrderNode(this.#root);
+        return this.#preOrderNode(this.#root);
     }
 
-    preOrderNode(node){
+    #preOrderNode(node){
         if(node !== null){
             console.log(node.item);
-            this.preOrderNode(node.left);
-            this.preOrderNode(node.right);
+            this.#preOrderNode(node.left);
+            this.#preOrderNode(node.right);
         }
     }
 
@@ -104,14 +104,14 @@ class BinaryTree {
      * @returns {Array} - An array containing the items visited during the traversal.
      */
     inOrder(){
-        return this.inOrderNode(this.#root);
+        return this.#inOrderNode(this.#root);
     }
 
-    inOrderNode(node){
+    #inOrderNode(node){
         if(node !== null){
-            this.inOrderNode(node.left);
+            this.#inOrderNode(node.left);
             console.log(node.item);
-            this.inOrderNode(node.right);
+            this.#inOrderNode(node.right);
         }
     }
 
@@ -120,13 +120,13 @@ class BinaryTree {
      * @returns {Array} - An array containing the items visited during the traversal.
      */
     postOrder(){
-        return this.postOrderNode(this.#root);
+        return this.#postOrderNode(this.#root);
     }
 
-    postOrderNode(node){
+    #postOrderNode(node){
         if(node !== null){
-            this.postOrderNode(node.left);
-            this.postOrderNode(node.right);
+            this.#postOrderNode(node.left);
+            this.#postOrderNode(node.right);
             console.log(node.item);
         }
     }
