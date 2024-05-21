@@ -1,8 +1,10 @@
 class Node {
+    
     constructor(value) {
         this.value = value; 
         this.next = null;   
     }
+
 }
 
 class LinkedList {
@@ -74,6 +76,35 @@ class LinkedList {
 
         return null;
     }
+
+    floydAlgorithm() {
+        let tortoise = this.#head;
+        let hare = this.#head.next.next;
+        let result = false;
+
+        if(this.#length === 0) {
+            result = false;
+        }
+
+        while(hare && hare.next && result === false) {
+            if(hare === tortoise) {
+                result = true;
+            }
+
+            tortoise = tortoise.next;
+            hare = hare.next.next;
+        }
+        return result;
+      
+    }
+
+    get tail() {
+        console.log(this.#tail);
+        return this.#tail;
+    }
+
+
+   
 }
 
 //Usage
@@ -88,4 +119,8 @@ console.log(linkedList.search(3));
 linkedList.delete(3);
 console.log(linkedList.search(3));
 
-/*4. **Linked List Cycle**: Implement a function to detect if a linked list has a cycle. Use Floyd's Cycle Detection Algorithm (Tortoise and Hare algorithm) to solve this problem efficiently.*/
+console.log(linkedList.floydAlgorithm()); 
+
+linkedList.tail.next = linkedList.search(2);
+
+console.log(linkedList.floydAlgorithm()); 
