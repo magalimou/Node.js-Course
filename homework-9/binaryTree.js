@@ -91,6 +91,23 @@ class BinaryTree {
             console.log(node.item);
         }
     }
+
+    isBST() {
+        return this.isBSTUtil(this.#root, -Infinity, Infinity);
+    }  
+
+    isBSTUtil(node, min, max) {
+
+        if (node === null) {
+            return true;
+        }
+    
+        if (node.item <= min || node.item >= max) {
+            return false;
+        }
+
+        return this.isBSTUtil(node.left, min, node.item) && this.isBSTUtil(node.right, node.item, max);
+    }
 }
 
 // Usage
@@ -107,3 +124,5 @@ console.log(binaryTree.search(5));
 binaryTree.preOrder();
 binaryTree.inOrder();
 binaryTree.postOrder();
+
+console.log(binaryTree.isBST());
