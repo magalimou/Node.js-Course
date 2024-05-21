@@ -87,3 +87,5 @@ linkedList.insert(5);
 console.log(linkedList.search(3));
 linkedList.delete(3);
 console.log(linkedList.search(3));
+
+/*4. **Linked List Cycle**: Implement a function to detect if a linked list has a cycle. Use Floyd's Cycle Detection Algorithm (Tortoise and Hare algorithm) to solve this problem efficiently.*/
