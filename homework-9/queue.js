@@ -1,14 +1,24 @@
+/**
+ * Class to represent a queue using an underlying array.
+ */
 class Queue {
     #elements;
     #last;
     #first;
 
+    /**
+     * Creates a new empty queue.
+     */
     constructor() {
         this.#elements = [];
         this.#last = -1;
         this.#first = 0;
     }
 
+     /**
+     * Adds an element to the back of the queue.
+     * @param {*} element - The element to add.
+     */
     enqueue(element){
         if(this.#last === -1){
             this.#elements.push(element);
@@ -20,6 +30,10 @@ class Queue {
         }
     }
 
+    /**
+     * Removes and returns the element from the front of the queue.
+     * @returns {*} - The removed element or null if the queue is empty.
+     */
     dequeue(){
         if(this.#last === -1){
             return null;
@@ -28,6 +42,10 @@ class Queue {
         return this.#elements.shift();
     }
 
+    /**
+     * Returns the element at the front of the queue without removing it.
+     * @returns {*} - The front element of the queue or null if the queue is empty.
+     */
     peek(){
         if(this.isEmpty()){
             return null;
@@ -36,6 +54,10 @@ class Queue {
         }
     }
 
+    /**
+     * Checks if the queue is empty.
+     * @returns {boolean} - Returns true if the queue is empty, otherwise false.
+     */
     isEmpty(){
         return this.#last === -1;
     }

@@ -1,5 +1,12 @@
 
+/**
+ * Class to represent a node in a binary tree.
+ */
 class Node {
+    /**
+     * Creates a new node with the given item.
+     * @param {*} item - The item stored in the node.
+     */
     constructor(item) {
         this.item = item;
         this.left = null;
@@ -7,13 +14,23 @@ class Node {
     }
 }
 
+/**
+ * Class to represent a binary search tree (BST).
+ */
 class BinaryTree {
-    #root;
+    #root;  // Pointer to the root node of the tree
 
+    /**
+     * Creates a new empty binary tree.
+     */
     constructor() {
         this.#root = null;
     }
 
+    /**
+     * Inserts a new item into the binary tree.
+     * @param {*} item - The item to insert.
+     */
     insert(item) {
         const newNode = new Node(item);
 
@@ -24,6 +41,11 @@ class BinaryTree {
         }
     }
 
+    /**
+     * Inserts a new node into the binary tree recursively.
+     * @param {Node} node - The current node being examined.
+     * @param {Node} newNode - The new node to insert.
+     */
     insertNode(node, newNode) {
         if(newNode.item < node.item) {
             if(node.left === null) {
@@ -40,6 +62,11 @@ class BinaryTree {
         }
     }
 
+    /**
+     * Searches for an item in the binary tree.
+     * @param {*} item - The item to search for.
+     * @returns {Node|null} - The node containing the item, or null if not found.
+     */
     search(item) {
         return this.searchNode(this.#root, item);
     }
@@ -56,6 +83,10 @@ class BinaryTree {
         }
     }
 
+    /**
+     * Performs a pre-order traversal of the binary tree.
+     * @returns {Array} - An array containing the items visited during the traversal.
+     */
     preOrder(){
         return this.preOrderNode(this.#root);
     }
@@ -68,6 +99,10 @@ class BinaryTree {
         }
     }
 
+    /**
+     * Performs an in-order traversal of the binary tree.
+     * @returns {Array} - An array containing the items visited during the traversal.
+     */
     inOrder(){
         return this.inOrderNode(this.#root);
     }
@@ -80,6 +115,10 @@ class BinaryTree {
         }
     }
 
+     /**
+     * Performs a post-order traversal of the binary tree.
+     * @returns {Array} - An array containing the items visited during the traversal.
+     */
     postOrder(){
         return this.postOrderNode(this.#root);
     }
@@ -92,10 +131,21 @@ class BinaryTree {
         }
     }
 
+    /**
+     * Checks if the binary tree satisfies the Binary Search Tree (BST) property.
+     * @returns {boolean} - True if the tree is a valid BST, otherwise false.
+     */
     isBST() {
         return this.isBSTUtil(this.#root, -Infinity, Infinity);
     }  
 
+    /**
+     * Utility function to recursively check if a subtree is a valid BST.
+     * @param {Node} node - The root node of the subtree.
+     * @param {number} min - The minimum allowed value in the subtree.
+     * @param {number} max - The maximum allowed value in the subtree.
+     * @returns {boolean} - True if the subtree is a valid BST, otherwise false.
+     */
     isBSTUtil(node, min, max) {
 
         if (node === null) {

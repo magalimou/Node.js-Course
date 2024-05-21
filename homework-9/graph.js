@@ -1,24 +1,44 @@
+/**
+ * Class to represent an undirected graph.
+ */
 class Graph {
     #adjacencyList;
 
+    /**
+     * Creates a new empty graph.
+     */
     constructor() {
         this.#adjacencyList = {};
     }
 
+    /**
+     * Adds a new node to the graph.
+     * @param {*} node - The node to add.
+     */
     add(node) {
         if (!this.#adjacencyList[node]) {
             this.#adjacencyList[node] = [];
         }
     }
 
+    /**
+     * Adds an undirected edge between two nodes in the graph.
+     * @param {*} node1 - The first node.
+     * @param {*} node2 - The second node.
+     * @param {number} [weight=1] - The weight of the edge (default is 1).
+     */
     addEdge(node1, node2, weight = 1) {
         if (this.#adjacencyList[node1] && this.#adjacencyList[node2]) {
             this.#adjacencyList[node1].push({ node: node2, weight });
             this.#adjacencyList[node2].push({ node: node1, weight });
         }
     }
-
     
+    /**
+     * Performs a Depth-First Search (DFS) traversal starting from the given node.
+     * @param {*} start - The node to start the traversal from.
+     * @returns {Array} - An array containing the nodes visited during the traversal.
+     */
     dfs(start) {
         const result = [];
         const visited = {};
@@ -39,6 +59,11 @@ class Graph {
         return result;
     }
 
+     /**
+     * Performs a Breadth-First Search (BFS) traversal starting from the given node.
+     * @param {*} start - The node to start the traversal from.
+     * @returns {Array} - An array containing the nodes visited during the traversal.
+     */
     bfs(start) {
         const queue = [start];
         const result = [];
@@ -58,6 +83,12 @@ class Graph {
         return result;
     }
 
+    /**
+     * Finds the shortest path between two nodes using Dijkstra's algorithm.
+     * @param {*} start - The starting node.
+     * @param {*} finish - The ending node.
+     * @returns {Array} - An array representing the shortest path between the nodes.
+     */
     dijkstra(start, finish) {
         const distances = {};
         const previous = {};
@@ -108,6 +139,12 @@ class Graph {
         return path.concat(smallest).reverse();
     }
 
+    /**
+     * Finds the shortest path between two nodes using Breadth-First Search (BFS).
+     * @param {*} start - The starting node.
+     * @param {*} finish - The ending node.
+     * @returns {Array} - An array representing the shortest path between the nodes.
+     */
     bfsShortestPath(start, finish) {
         const queue = [start];
         const visited = {};
@@ -140,6 +177,10 @@ class Graph {
         return path;
     }
 
+    /**
+     * Returns the adjacency list representing the graph.
+     * @returns {Object} - The adjacency list.
+     */
     get adjacencyList() {
         return this.#adjacencyList;
     }
