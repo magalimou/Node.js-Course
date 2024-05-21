@@ -18,7 +18,7 @@ class Node {
  * Class to represent a binary search tree (BST).
  */
 class BinaryTree {
-    #root;  // Pointer to the root node of the tree
+    #root; // Pointer to the root node of the tree
 
     /**
      * Creates a new empty binary tree.
