@@ -127,5 +127,7 @@ class CustomHashTable {
 
   console.log(ht.delete("Canada"));
   console.log(ht.get("Canada"));
-
   console.log(ht.delete("Canada"));
+
+  console.log(ht.delete("France"));
+  console.log(ht.get("France"));
