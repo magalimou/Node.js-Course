@@ -68,13 +68,13 @@ class CustomHashTable {
     get(key) {
       const index = this.#hash(key);
       if(this.#table[index]){
-        for(let i = 0; i < this.#table.length; i++) {
+        for(let i = 0; i < this.#table[index].length; i++) {
           if(this.#table[index][i][0] === key) {
             return this.#table[index][i][1];
           }
         }
       }
-      return undefined;
+      return null;
     }
   
      /**
@@ -128,6 +128,4 @@ class CustomHashTable {
   console.log(ht.delete("Canada"));
   console.log(ht.get("Canada"));
 
-  ht.display();
-
-  console.log(ht.delete("Spain"));
+  console.log(ht.delete("Canada"));
