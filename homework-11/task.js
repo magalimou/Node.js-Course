@@ -51,5 +51,4 @@ function tokenize(jsonString) {
   const jsonString = '{"name": "John", "age": 30, "city": "New York"}';
   const jsonObject = myJSONParse(jsonString);
 
-  console.log(jsonObject.name); 
   console.log(jsonObject); // Should output the parsed JavaScript object.
