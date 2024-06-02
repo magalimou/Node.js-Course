@@ -1,8 +1,18 @@
+/**
+ * Parses a JSON-like string and returns the corresponding JavaScript object.
+ * @param {string} jsonString - The JSON-like string to parse.
+ * @returns {any} The parsed JavaScript object.
+ * @throws {Error} If there is a syntax error in the JSON input.
+ */
 function myJSONParse(jsonString) {
     try {
         const tokens = tokenize(jsonString);
         let currentIndex = 0;
 
+        /**
+         * Parses the current token and returns its corresponding value.
+         * @returns {any} The parsed value.
+         */
         function parseValue() {
             const token = tokens[currentIndex];
 
@@ -28,6 +38,11 @@ function myJSONParse(jsonString) {
             }
         }
 
+        /**
+         * Parses an object from a JSON-like string.
+         * @returns {Object} The parsed object.
+         * @throws {Error} If there is an unexpected end of JSON input or if there is a syntax error in the object.
+         */
         function parseObject() {
             const obj = {};
             currentIndex++; // Skip '{'
@@ -55,6 +70,11 @@ function myJSONParse(jsonString) {
             return obj;
         }
 
+        /**
+         * Parses an array from the JSON input.
+         * @returns {Array} The parsed array.
+         * @throws {Error} If there is an unexpected end of JSON input or if there is a syntax error in the array.
+         */
         function parseArray() {
             const arr = [];
             currentIndex++; // Skip '['
@@ -83,6 +103,12 @@ function myJSONParse(jsonString) {
     }
 }
 
+/**
+ * Tokenizes a JSON string into an array of tokens.
+ *
+ * @param {string} jsonString - The JSON string to tokenize.
+ * @returns {string[]} An array of tokens.
+ */
 function tokenize(jsonString) {
     const tokenRegExp = /"(?:\\["\\]|[^\n"\\])*"|\d+(?:\.\d*)?|true|false|null|[\[\]\{\}\:\,]/g;
     const tokens = jsonString.match(tokenRegExp);
